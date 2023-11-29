@@ -7,16 +7,16 @@
     tools:context=".MenuTendina">
 
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/toHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="299dp"
+        android:layout_marginStart="347dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="624dp"
+        android:layout_marginBottom="672dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/go_back_arrow" />
+        app:srcCompat="?attr/homeAsUpIndicator" />
 </androidx.constraintlayout.widget.ConstraintLayout>
