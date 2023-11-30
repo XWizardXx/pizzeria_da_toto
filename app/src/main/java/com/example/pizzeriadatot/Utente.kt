@@ -17,7 +17,7 @@ class Utente : AppCompatActivity() {
         else
         {
             val toUserPage = Intent(this, UserPage::class.java)
-            startActivity(toUserPage) 
+            startActivity(toUserPage)
         }
     }
 }

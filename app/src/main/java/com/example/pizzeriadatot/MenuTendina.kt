@@ -30,7 +30,5 @@ class MenuTendina : AppCompatActivity()
             val toMenu = Intent(this, Menu::class.java)
             startActivity(toMenu)
         }
-
-        val
     }
 }
