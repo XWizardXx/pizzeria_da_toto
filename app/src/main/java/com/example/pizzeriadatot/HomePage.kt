@@ -20,10 +20,6 @@ class HomePage : AppCompatActivity()
             val toMenu = Intent(this, MenuTendina::class.java)
             startActivity(toMenu)
         }
-        val titolo : TextView = findViewById(R.id.titolo)
-
-
-
     }
 
     override fun onStart()
