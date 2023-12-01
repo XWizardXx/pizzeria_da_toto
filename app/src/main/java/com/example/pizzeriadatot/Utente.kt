@@ -3,6 +3,7 @@ package com.example.pizzeriadatot
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 class Utente : AppCompatActivity() {
     val loggato : Boolean = true;
@@ -14,5 +15,11 @@ class Utente : AppCompatActivity() {
             val toUserPage = Intent(this, Login::class.java)
             startActivity(toUserPage)
         }
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.d("premutaFrecciaIndietro", "torno al menu a tendina")
+        val toMenuTendina = Intent(this, MenuTendina::class.java)
+        startActivity(toMenuTendina)
     }
 }
