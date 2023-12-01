@@ -17,20 +17,28 @@ class MenuTendina : AppCompatActivity()
         val goBack : ImageButton = findViewById(R.id.toHome)
         goBack.setOnClickListener {
             val toHome = Intent(this, HomePage::class.java)
+            Log.d("PremutoGoBack", "cambio attivita")
             startActivity(toHome)
         }
 
         val userPage : Button = findViewById(R.id.toUser)
         userPage.setOnClickListener {
             val toUser = Intent(this, Utente::class.java)
+            Log.d("PremutoUser", "cambio attivita")
             startActivity(toUser)
-            Log.d("PremutoUser", "cambio attività")
         }
 
         val menu : Button = findViewById(R.id.toMenu)
         menu.setOnClickListener {
             val toMenu = Intent(this, Menu::class.java)
+            Log.d("PremutoMenu", "cambio attivita")
             startActivity(toMenu)
         }
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.d("PremutaFrecciaIndietro", "torno alla home page")
+        val toHomepAge = Intent(this, HomePage::class.java)
+        startActivity(toHomepAge)
     }
 }
