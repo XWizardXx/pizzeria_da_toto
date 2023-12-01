@@ -2,9 +2,11 @@ package com.example.pizzeriadatot
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -25,7 +27,7 @@ class SignIn : AppCompatActivity()
         val testoEmail : TextView = findViewById(R.id.RegTextEmail)
         val testoPassword : TextView = findViewById(R.id.RegTextPassword)
         val registrati : Button = findViewById(R.id.Registrati)
-        registrati.setOnClickListener {
+        registrati.setOnClickListener(View.OnClickListener {
             val nome = testoNome.text.toString()
             val email = testoEmail.text.toString()
             val password = testoPassword.text.toString()
@@ -39,8 +41,11 @@ class SignIn : AppCompatActivity()
                 .child(nome)
                 .setValue(mappa)
                 .addOnSuccessListener (OnSuccessListener {
-                    //TODO
+                    Toast.makeText(this, "Dati inseriti con successo!", Toast.LENGTH_SHORT)
                 })
-        }
+                .addOnFailureListener(OnFailureListener {
+                    Toast.makeText(this, ""+it.message, Toast.LENGTH_SHORT)
+                })
+        })
     }
 }
