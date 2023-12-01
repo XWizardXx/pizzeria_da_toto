@@ -5,18 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class Utente : AppCompatActivity() {
-    val loggato : Boolean = false;
+    val loggato : Boolean = true;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_utente)
-        if (!loggato)
+        if (loggato)
         {
-            val toLogin = Intent(this, Login::class.java)
-            startActivity(toLogin)
-        }
-        else
-        {
-            val toUserPage = Intent(this, UserPage::class.java)
+            val toUserPage = Intent(this, Login::class.java)
             startActivity(toUserPage)
         }
     }

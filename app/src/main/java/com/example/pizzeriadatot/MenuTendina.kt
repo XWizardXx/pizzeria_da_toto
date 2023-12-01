@@ -3,6 +3,7 @@ package com.example.pizzeriadatot
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 
@@ -23,6 +24,7 @@ class MenuTendina : AppCompatActivity()
         userPage.setOnClickListener {
             val toUser = Intent(this, Utente::class.java)
             startActivity(toUser)
+            Log.d("PremutoUser", "cambio attività")
         }
 
         val menu : Button = findViewById(R.id.toMenu)
