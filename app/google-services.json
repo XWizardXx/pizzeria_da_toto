@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "418096145035",
+    "project_id": "pizzeriadatoto-595fd",
+    "storage_bucket": "pizzeriadatoto-595fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418096145035:android:49a0e0e2ef8270ac1fea8e",
+        "android_client_info": {
+          "package_name": "com.example.pizzeriadatot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZlPsll2kT7dystH-q23POrkVvX1FA5fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
