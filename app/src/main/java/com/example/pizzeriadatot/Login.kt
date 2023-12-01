@@ -19,11 +19,13 @@ class Login : AppCompatActivity()
             startActivity(toRegister)
         }
     }
-
-    override fun onStop() {
-        super.onStop()
+/*
+    override fun onPause() {
+        super.onPause()
         Log.d("premutaFrecciaIndietro", "torno al menu a tendina")
         val toMenuTendina = Intent(this, MenuTendina::class.java)
         startActivity(toMenuTendina)
     }
+
+ */
 }

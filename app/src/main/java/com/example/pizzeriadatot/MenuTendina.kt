@@ -35,10 +35,14 @@ class MenuTendina : AppCompatActivity()
             startActivity(toMenu)
         }
     }
-    override fun onStop() {
-        super.onStop()
+
+    /*
+    override fun onPause() {
+        super.onPause()
         Log.d("PremutaFrecciaIndietro", "torno alla home page")
         val toHomepAge = Intent(this, HomePage::class.java)
         startActivity(toHomepAge)
     }
+
+     */
 }
