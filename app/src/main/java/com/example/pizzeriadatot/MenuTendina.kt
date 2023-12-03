@@ -24,7 +24,7 @@ class MenuTendina : AppCompatActivity()
 
         val userPage : Button = findViewById(R.id.toUser)
         userPage.setOnClickListener {
-            val toUser = Intent(this, Utente::class.java)
+            val toUser = Intent(this, SchermataUtente::class.java)
             Log.d("PremutoUser", "cambio attivita")
             startActivity(toUser)
         }

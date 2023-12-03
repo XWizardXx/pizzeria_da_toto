@@ -3,7 +3,6 @@ package com.example.pizzeriadatot
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -43,7 +42,7 @@ class Login : AppCompatActivity()
 
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
             if(task.isSuccessful){
-                val intent= Intent(this,Utente::class.java)
+                val intent= Intent(this,SchermataUtente::class.java)
                 intent.putExtra("loggato", true)
                 startActivity(intent)
                 finish()
