@@ -6,84 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".SignIn">
 
+    <EditText
+        android:id="@+id/TextNomeUtente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="129dp"
+        android:ems="10"
+        android:hint="nome"
+        android:inputType="text"
+        android:text=""
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/TextCognomeUtente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="cognome"
+        android:inputType="text"
+        android:text=""
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/TextNomeUtente"
+        app:layout_constraintTop_toBottomOf="@+id/TextNomeUtente" />
+
+    <EditText
+        android:id="@+id/RegTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/RegTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/RegTextEmail" />
+
+    <EditText
+        android:id="@+id/RegTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/TextCognomeUtente"
+        app:layout_constraintTop_toBottomOf="@+id/TextCognomeUtente" />
+
     <Button
         android:id="@+id/Registrati"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:text="Registrati"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegTextPassword" />
-
-    <EditText
-        android:id="@+id/RegTextEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@+id/TextNomeUtente"
-        app:layout_constraintTop_toBottomOf="@+id/TextNomeUtente" />
-
-    <TextView
-        android:id="@+id/RegEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email:"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/RegTextEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/TextNomeUtente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text=""
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NomeUtenteReg" />
-
-    <TextView
-        android:id="@+id/NomeUtenteReg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:text="Nome Utente:"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/RegTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@+id/RegTextEmail"
-        app:layout_constraintTop_toBottomOf="@+id/RegTextEmail" />
-
-    <TextView
-        android:id="@+id/RegPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password:"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/RegTextPassword"
-        app:layout_constraintEnd_toEndOf="@+id/RegTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/RegTextPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
