@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 
-class Utente : AppCompatActivity() {
+class SchermataUtente : AppCompatActivity() {
     val loggato : Boolean = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_utente)
+        setContentView(R.layout.activity_schermata_utente)
         if (!loggato)
         {
             val toUserPage = Intent(this, Login::class.java)
