@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PizzeriaDaTotò"
         tools:targetApi="34">
         <activity
+            android:name=".ProdottoSingolo"
+            android:exported="false" />
+        <activity
             android:name=".SchermataUtente"
             android:exported="false" />
         <activity
