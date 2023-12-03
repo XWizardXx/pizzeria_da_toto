@@ -16,7 +16,7 @@
             android:name=".SchermataUtente"
             android:exported="false" />
         <activity
-            android:name=".UserPage"
+            android:name=".Menu"
             android:exported="false" />
         <activity
             android:name=".SignIn"

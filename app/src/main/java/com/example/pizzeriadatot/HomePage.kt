@@ -19,7 +19,7 @@ class HomePage : AppCompatActivity()
         val menu: ImageButton = findViewById(R.id.menu)
         menu.setOnClickListener {
             val toMenu = Intent(this, MenuTendina::class.java)
-            Log.d("PremutoMenu", "cambio attivita")
+            Log.d("cambioAciviy", "cliccao menu a tendina")
             startActivity(toMenu)
         }
 
