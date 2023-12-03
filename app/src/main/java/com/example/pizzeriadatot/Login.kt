@@ -21,6 +21,11 @@ class Login : AppCompatActivity()
 
         auth= FirebaseAuth.getInstance()
 
+        val registrato : Button = findViewById(R.id.LoginButton)
+        registrato.setOnClickListener {
+            login()
+        }
+
         val noRegistrato : Button = findViewById(R.id.noRegistrato)
         noRegistrato.setOnClickListener {
             val toRegister = Intent(this, SignIn::class.java)
