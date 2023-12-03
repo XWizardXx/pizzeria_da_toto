@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.util.Log
 
 class Utente : AppCompatActivity() {
-    val loggato : Boolean = false;
+    var loggato : Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loggato = false
         setContentView(R.layout.activity_utente)
         if (!loggato)
         {
+            Log.d("non sono loggato", "vado al signin")
             val toUserPage = Intent(this, Login::class.java)
             startActivity(toUserPage)
         }
