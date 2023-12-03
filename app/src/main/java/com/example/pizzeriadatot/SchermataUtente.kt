@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 
-class SchermataUtente : AppCompatActivity() {
+class Utente : AppCompatActivity() {
     val loggato : Boolean = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
