@@ -1,10 +1,10 @@
 package com.example.pizzeriadatot
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.widget.Toast
 import com.example.pizzeriadatot.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -67,10 +67,13 @@ class SignIn : AppCompatActivity()
             binding.TextCognomeUtente.text.clear()
             binding.RegTextEmail.text.clear()
             binding.RegTextPassword.text.clear()
+            val toLogin = Intent(this, Login::class.java)
+            startActivity(toLogin)
+            finish()
 
-            Toast.makeText(this, "Dati salvati!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show()
         }.addOnFailureListener {
-            Toast.makeText(this, "Errore!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Errore!\nRiprova", Toast.LENGTH_LONG).show()
         }
     }
 

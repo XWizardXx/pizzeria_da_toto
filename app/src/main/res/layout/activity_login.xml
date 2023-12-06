@@ -14,7 +14,8 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:text=""
-        android:textAlignment="center"
+        android:hint="Email"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,40 +24,20 @@
         android:id="@+id/LoginTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         android:text=""
+        android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="@+id/LoginTextEmail"
         app:layout_constraintTop_toBottomOf="@+id/LoginTextEmail" />
-
-    <TextView
-        android:id="@+id/LoginEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email:"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/LoginTextEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/LoginPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password:"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/LoginTextPassword"
-        app:layout_constraintEnd_toEndOf="@+id/LoginTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/LoginTextPassword" />
 
     <Button
         android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="10dp"
         android:text="Login"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -68,7 +49,7 @@
         android:id="@+id/noRegistrato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="40dp"
         android:text="Non hai un Account?"
         android:textSize="15dp"
         android:textStyle="bold"

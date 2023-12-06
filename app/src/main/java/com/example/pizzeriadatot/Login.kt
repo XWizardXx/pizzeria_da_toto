@@ -34,31 +34,22 @@ class Login : AppCompatActivity()
 
     fun login()
     {
-        val testoEmail : TextView = findViewById(R.id.RegTextEmail)
-        val testoPassword : TextView = findViewById(R.id.RegTextPassword)
+        val testoEmail : TextView = findViewById(R.id.LoginTextEmail)
+        val testoPassword : TextView = findViewById(R.id.LoginTextPassword)
 
         val email = testoEmail.text.toString()
         val password = testoPassword.text.toString()
 
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
             if(task.isSuccessful){
-                val intent= Intent(this,SchermataUtente::class.java)
-                intent.putExtra("loggato", true)
-                startActivity(intent)
+                val toUserPage = Intent(this,SchermataUtente::class.java)
+                startActivity(toUserPage)
                 finish()
+
+                Toast.makeText(this, "Accesso effettuato", Toast.LENGTH_LONG).show()
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(applicationContext,exception.localizedMessage, Toast.LENGTH_LONG).show()
         }
     }
-
-/*
-    override fun onPause() {
-        super.onPause()
-        Log.d("premutaFrecciaIndietro", "torno al menu a tendina")
-        val toMenuTendina = Intent(this, MenuTendina::class.java)
-        startActivity(toMenuTendina)
-    }
-
- */
 }

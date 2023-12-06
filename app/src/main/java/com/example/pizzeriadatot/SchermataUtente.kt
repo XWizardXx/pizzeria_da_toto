@@ -4,22 +4,26 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 
 class SchermataUtente : AppCompatActivity() {
-    val loggato : Boolean = false;
+    var loggato : Boolean = false
+    private lateinit var auth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schermata_utente)
-        if (!loggato)
+
+        auth = FirebaseAuth.getInstance()
+        if (auth.currentUser != null)
         {
-            val toUserPage = Intent(this, Login::class.java)
-            startActivity(toUserPage)
+            val toLogin = Intent(this, Login::class.java)
+            startActivity(toLogin)
         }
     }
 
     override fun onRestart() {
         super.onRestart()
-        if(!loggato)
+        if(auth.currentUser != null)
         {
             Log.d("non sono loggato", "torno al menu a tendina (restart)")
             val toMenuTendina = Intent(this, MenuTendina::class.java)
@@ -27,13 +31,4 @@ class SchermataUtente : AppCompatActivity() {
         }
     }
 
-    /*
-    override fun onPause() {
-        super.onPause()
-        Log.d("premutaFrecciaIndietro", "torno al menu a tendina")
-        val toMenuTendina = Intent(this, MenuTendina::class.java)
-        startActivity(toMenuTendina)
-    }
-
-     */
 }
