@@ -24,9 +24,9 @@ class MenuTendina : AppCompatActivity()
 
         val userPage : Button = findViewById(R.id.toUser)
         userPage.setOnClickListener {
-            val toUser = Intent(this, SchermataUtente::class.java)
+            val toLogin = Intent(this, Login::class.java)
             Log.d("cambioAciviy", "torno alla homepage")
-            startActivity(toUser)
+            startActivity(toLogin)
         }
 
         val menu : Button = findViewById(R.id.toMenu)

@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.pizzeriadatot.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.util.regex.Pattern
@@ -17,6 +18,7 @@ class SignIn : AppCompatActivity()
     private lateinit var binding: ActivitySignInBinding
     private lateinit var  database : DatabaseReference
     private lateinit var auth : FirebaseAuth
+    private lateinit var utenteFirebase : FirebaseUser
     /*private var PASSWORD_PATTERN : Pattern = Pattern.compile(
         "^" +
                 "(?=.*[0-9])" +
@@ -50,9 +52,13 @@ class SignIn : AppCompatActivity()
             .addOnCompleteListener{
                 if (it.isSuccessful)
                 {
+                    utenteFirebase = auth.currentUser!!
                     salvaSuDataBase(nome, cognome, email)
                 }else
                 {
+                    /*try {
+                        throw it.exception!!
+                    }catch ()*/
                     Toast.makeText(this, it.exception!!.message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -62,16 +68,18 @@ class SignIn : AppCompatActivity()
     {
         database = FirebaseDatabase.getInstance().getReference("Utenti")
         val user = User(nome, cognome, email)
-        database.child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(user).addOnSuccessListener {
+        database.child(utenteFirebase.uid).setValue(user).addOnSuccessListener {
             binding.TextNomeUtente.text.clear()
             binding.TextCognomeUtente.text.clear()
             binding.RegTextEmail.text.clear()
             binding.RegTextPassword.text.clear()
+            Toast.makeText(this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show()
+            utenteFirebase.sendEmailVerification()
+            Toast.makeText(this, "Inviata email di verifica, controlla la tua casella di posta elettronica", Toast.LENGTH_LONG).show()
+            auth.signOut()
             val toLogin = Intent(this, Login::class.java)
             startActivity(toLogin)
             finish()
-
-            Toast.makeText(this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show()
         }.addOnFailureListener {
             Toast.makeText(this, "Errore!\nRiprova", Toast.LENGTH_LONG).show()
         }

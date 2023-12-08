@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class SchermataUtente : AppCompatActivity() {
     var loggato : Boolean = false
@@ -14,18 +17,19 @@ class SchermataUtente : AppCompatActivity() {
         setContentView(R.layout.activity_schermata_utente)
 
         auth = FirebaseAuth.getInstance()
-        if (auth.currentUser != null)
-        {
+        val disconnetti : Button = findViewById(R.id.Disconnetti)
+        disconnetti.setOnClickListener {
+            auth.signOut()
             val toLogin = Intent(this, Login::class.java)
             startActivity(toLogin)
+            finish()
         }
     }
-
     override fun onRestart() {
         super.onRestart()
         if(auth.currentUser != null)
         {
-            Log.d("non sono loggato", "torno al menu a tendina (restart)")
+            Log.d("SchermataUtente", "torno al menu a tendina (restart)")
             val toMenuTendina = Intent(this, MenuTendina::class.java)
             startActivity(toMenuTendina)
         }

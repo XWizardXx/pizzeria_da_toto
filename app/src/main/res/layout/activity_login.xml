@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="175dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:text=""
-        android:hint="Email"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,5 +56,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LoginButton" />
+
+    <Button
+        android:id="@+id/reinviaEmailVedifica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Invia email di verifica"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noRegistrato" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
