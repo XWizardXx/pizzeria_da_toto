@@ -5,9 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import com.example.pizzeriadatot.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -19,13 +22,12 @@ class SignIn : AppCompatActivity()
     private lateinit var  database : DatabaseReference
     private lateinit var auth : FirebaseAuth
     private lateinit var utenteFirebase : FirebaseUser
-    /*private var PASSWORD_PATTERN : Pattern = Pattern.compile(
-        "^" +
-                "(?=.*[0-9])" +
+    private var PASSWORD_PATTERN : Pattern = Pattern.compile(
+        "(?=.*[0-9])" +
                 "(?=.*[a-z])" +
                 "(?=.*[A-Z])" +
-                "(?=.*[@#$%^&+=_\\-])" +
-                "$")*/
+                "(?=.*[@#$%^&+=])" +
+                "(?=//S+$)")
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -47,21 +49,32 @@ class SignIn : AppCompatActivity()
         val cognome = binding.TextCognomeUtente.text.toString()
         val email = binding.RegTextEmail.text.toString()
         val password = binding.RegTextPassword.text.toString()
-        /*valida(nome, cognome, email, password)*/
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener{
-                if (it.isSuccessful)
-                {
-                    utenteFirebase = auth.currentUser!!
-                    salvaSuDataBase(nome, cognome, email)
-                }else
-                {
-                    /*try {
-                        throw it.exception!!
-                    }catch ()*/
-                    Toast.makeText(this, it.exception!!.message, Toast.LENGTH_SHORT).show()
+        if (valida(nome, cognome, email, password))
+        {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener{
+                    if (it.isSuccessful)
+                    {
+                        utenteFirebase = auth.currentUser!!
+                        salvaSuDataBase(nome, cognome, email)
+                    }else
+                    {
+                        try
+                        {
+                            throw it.exception!!
+                        }
+                        catch (e : FirebaseAuthUserCollisionException)
+                        {
+                            binding.RegTextEmail.error = "Email già in uso, prova con un'altra"
+                            binding.RegTextEmail.requestFocus()
+                        }
+                        catch (e : FirebaseAuthWeakPasswordException)
+                        {
+
+                        }
+                    }
                 }
-            }
+        }
     }
 
     private fun salvaSuDataBase(nome : String, cognome : String, email : String)
@@ -78,6 +91,7 @@ class SignIn : AppCompatActivity()
             Toast.makeText(this, "Inviata email di verifica, controlla la tua casella di posta elettronica", Toast.LENGTH_LONG).show()
             auth.signOut()
             val toLogin = Intent(this, Login::class.java)
+            toLogin.putExtra("email", email)
             startActivity(toLogin)
             finish()
         }.addOnFailureListener {
@@ -85,45 +99,50 @@ class SignIn : AppCompatActivity()
         }
     }
 
-    /*private fun valida(nome : String, cognome: String, email: String, password: String) //DA SISTEMARE
+    private fun valida(nome : String, cognome: String, email: String, password: String) : Boolean //DA SISTEMARE
     {
         if (nome.isEmpty())
         {
             binding.TextNomeUtente.error = "Inserisci il tuo nome"
             binding.TextNomeUtente.requestFocus()
-            return
+            return false
         }
         if (cognome.isEmpty())
         {
             binding.TextCognomeUtente.error = "Inserisci il tuo cognome"
             binding.TextCognomeUtente.requestFocus()
-            return
+            return false
         }
         if (email.isEmpty())
         {
             binding.RegTextEmail.error = "Inserisci la tua email"
             binding.RegTextEmail.requestFocus()
-            return
+            return false
         }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
             binding.RegTextEmail.error = "Inserisci una email valida"
             binding.RegTextEmail.requestFocus()
-            return
+            return false
         }
         if (password.isEmpty())
         {
             binding.RegTextPassword.error = "Inserisci una password"
             binding.RegTextPassword.requestFocus()
-            return
-        }else if (!PASSWORD_PATTERN.matcher(password).matches())
+            return false
+        }/*else if (!PASSWORD_PATTERN.matcher(password).matches())
         {
-            binding.RegTextPassword.error = "Inserisci una password valida: deve contenere almeno un lettera maiuscola, un numero e un carattere speciale"
+            binding.RegTextPassword.error = "Inserisci una password valida: deve contenere almeno un lettera maiuscola, un numero e un carattere speciale (@#\$%^&+=)"
             binding.RegTextPassword.requestFocus()
-            return
-        }else if (password.length < 8)
+            return false
+        }*/else if (password.length < 8)
         {
             binding.RegTextPassword.error = "Inserisci una password valida: deve avere almeno 8 caratteri"
             binding.RegTextPassword.requestFocus()
+            return false
         }
-    }*/
+        else
+        {
+            return true
+        }
+    }
 }

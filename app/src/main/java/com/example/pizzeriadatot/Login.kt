@@ -80,8 +80,6 @@ class Login : AppCompatActivity()
                     inviaEmail.setOnClickListener {
                         utenteFirebase.sendEmailVerification()
                         auth.signOut()
-                        testoEmail.clearComposingText()
-                        testoPassword.clearComposingText()
                         Toast.makeText(this, "Effettua nuovamente il login dopo aver verificato l'account", Toast.LENGTH_LONG).show()
                     }
                 }
