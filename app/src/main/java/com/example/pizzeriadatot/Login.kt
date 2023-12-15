@@ -36,6 +36,7 @@ class Login : AppCompatActivity()
         noRegistrato.setOnClickListener {
             val toRegister = Intent(this, SignIn::class.java)
             startActivity(toRegister)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
 
@@ -47,6 +48,7 @@ class Login : AppCompatActivity()
             Log.d("SchermataUtente", "utente loggato")
             val toUser = Intent(this, SchermataUtente::class.java)
             startActivity(toUser)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }else
         {
             Log.d("SchermataUtente", "utente non loggato")
@@ -72,7 +74,7 @@ class Login : AppCompatActivity()
                     val toUserPage = Intent(this,SchermataUtente::class.java)
                     startActivity(toUserPage)
                     Log.d("Login", "lacio attività schermataUtente")
-                    finish()
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 }else
                 {
                     Toast.makeText(this, "controlla la tua casella di posta, se non hai ricevuto la mail clicca il tasto apposito", Toast.LENGTH_LONG).show()
@@ -87,5 +89,10 @@ class Login : AppCompatActivity()
         }.addOnFailureListener { exception ->
             Toast.makeText(applicationContext,exception.localizedMessage, Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }

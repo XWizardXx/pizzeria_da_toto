@@ -19,24 +19,9 @@ class HomePage : AppCompatActivity()
         val menu: ImageButton = findViewById(R.id.menu)
         menu.setOnClickListener {
             val toMenu = Intent(this, MenuTendina::class.java)
-            Log.d("cambioAciviy", "cliccao menu a tendina")
+            Log.d("HomePage", "cliccao menu a tendina")
             startActivity(toMenu)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
-
-
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onStart()
-    {
-        super.onStart()
     }
 }

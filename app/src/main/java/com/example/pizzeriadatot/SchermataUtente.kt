@@ -32,7 +32,12 @@ class SchermataUtente : AppCompatActivity() {
             Log.d("SchermataUtente", "torno al menu a tendina (restart)")
             val toMenuTendina = Intent(this, MenuTendina::class.java)
             startActivity(toMenuTendina)
+            finish()
         }
     }
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
 }
