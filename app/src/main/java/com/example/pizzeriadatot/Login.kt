@@ -53,7 +53,7 @@ class Login : AppCompatActivity()
         }
     }
 
-    fun login(inviaEmail: Button)
+    private fun login(inviaEmail: Button)
     {
         val testoEmail : TextView = findViewById(R.id.LoginTextEmail)
         val testoPassword : TextView = findViewById(R.id.LoginTextPassword)

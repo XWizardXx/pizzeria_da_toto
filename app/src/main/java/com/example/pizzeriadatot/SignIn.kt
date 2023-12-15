@@ -22,12 +22,6 @@ class SignIn : AppCompatActivity()
     private lateinit var  database : DatabaseReference
     private lateinit var auth : FirebaseAuth
     private lateinit var utenteFirebase : FirebaseUser
-    private var PASSWORD_PATTERN : Pattern = Pattern.compile(
-        "(?=.*[0-9])" +
-                "(?=.*[a-z])" +
-                "(?=.*[A-Z])" +
-                "(?=.*[@#$%^&+=])" +
-                "(?=//S+$)")
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -67,10 +61,6 @@ class SignIn : AppCompatActivity()
                         {
                             binding.RegTextEmail.error = "Email già in uso, prova con un'altra"
                             binding.RegTextEmail.requestFocus()
-                        }
-                        catch (e : FirebaseAuthWeakPasswordException)
-                        {
-
                         }
                     }
                 }
@@ -129,12 +119,12 @@ class SignIn : AppCompatActivity()
             binding.RegTextPassword.error = "Inserisci una password"
             binding.RegTextPassword.requestFocus()
             return false
-        }/*else if (!PASSWORD_PATTERN.matcher(password).matches())
+        }else if (!passwordValida(password))
         {
             binding.RegTextPassword.error = "Inserisci una password valida: deve contenere almeno un lettera maiuscola, un numero e un carattere speciale (@#\$%^&+=)"
             binding.RegTextPassword.requestFocus()
             return false
-        }*/else if (password.length < 8)
+        }else if (password.length < 8)
         {
             binding.RegTextPassword.error = "Inserisci una password valida: deve avere almeno 8 caratteri"
             binding.RegTextPassword.requestFocus()
@@ -145,4 +135,32 @@ class SignIn : AppCompatActivity()
             return true
         }
     }
+
+    private fun passwordValida(password: String): Boolean
+    {
+        var hasLower = false
+        var hasUpper = false
+        var hasNumber = false
+        var hasSpecial = false
+
+        for (char in password)
+        {
+            if (char.isLowerCase())
+            {
+                hasLower = true
+            }else if (char.isUpperCase())
+            {
+                hasUpper = true
+            }else if (char.isDigit())
+            {
+                hasNumber = true
+            }else if (!char.isLetterOrDigit())
+            {
+                hasSpecial = true
+            }
+        }
+        return hasLower && hasUpper && hasNumber && hasSpecial
+    }
+
+
 }
