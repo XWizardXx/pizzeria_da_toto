@@ -23,7 +23,5 @@ class ProdottoSingolo : AppCompatActivity() {
         binding.Ingredienti.text = ingredienti
         binding.Allergeni.text = allergeni
         binding.Prezzo.text = prezzo
-
-
     }
 }
