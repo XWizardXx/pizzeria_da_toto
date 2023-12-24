@@ -28,7 +28,7 @@ class Menu : AppCompatActivity()
         )
 
         val allergeni = arrayOf(
-            "glutine, latticini"
+            "glutei, latticini"
         )
 
         val imageIDs = intArrayOf(
