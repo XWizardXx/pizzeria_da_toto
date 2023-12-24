@@ -4,12 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.util.Patterns
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseUser
 
 class Login : AppCompatActivity()
@@ -24,12 +24,9 @@ class Login : AppCompatActivity()
 
         auth = FirebaseAuth.getInstance()
 
-        val inviaEmail : Button = findViewById(R.id.reinviaEmailVedifica)
-        inviaEmail.visibility = INVISIBLE
-
         val accedi : Button = findViewById(R.id.LoginButton)
         accedi.setOnClickListener {
-            login(inviaEmail)
+            login()
         }
 
         val noRegistrato : Button = findViewById(R.id.noRegistrato)
@@ -55,7 +52,7 @@ class Login : AppCompatActivity()
         }
     }
 
-    private fun login(inviaEmail: Button)
+    private fun login()
     {
         val testoEmail : TextView = findViewById(R.id.LoginTextEmail)
         val testoPassword : TextView = findViewById(R.id.LoginTextPassword)
@@ -63,7 +60,8 @@ class Login : AppCompatActivity()
         val email = testoEmail.text.toString()
         val password = testoPassword.text.toString()
 
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
+        if (valida(email, password, testoEmail, testoPassword))
+            auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
             if(task.isSuccessful){
                 utenteFirebase = auth.currentUser!!
                 if (utenteFirebase.isEmailVerified)
@@ -77,17 +75,44 @@ class Login : AppCompatActivity()
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 }else
                 {
-                    Toast.makeText(this, "controlla la tua casella di posta, se non hai ricevuto la mail clicca il tasto apposito", Toast.LENGTH_LONG).show()
-                    inviaEmail.visibility = VISIBLE
-                    inviaEmail.setOnClickListener {
-                        utenteFirebase.sendEmailVerification()
-                        auth.signOut()
-                        Toast.makeText(this, "Effettua nuovamente il login dopo aver verificato l'account", Toast.LENGTH_LONG).show()
-                    }
+                    Toast.makeText(this, "Account non verificato, controlla la tua casella di posta elettronica", Toast.LENGTH_LONG).show()
                 }
             }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(applicationContext,exception.localizedMessage, Toast.LENGTH_LONG).show()
+            else
+            {
+                try
+                {
+                    throw task.exception!!
+                }
+                catch (e : FirebaseAuthInvalidCredentialsException)
+                {
+                    Toast.makeText(this, "Email o password errate!", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun valida(email: String, password: String, testoEmail: TextView, testoPassword: TextView): Boolean
+    {
+        if (email.isEmpty())
+        {
+            testoEmail.error = "Inserisci un indirizzo email"
+            testoEmail.requestFocus()
+            return false
+        }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        {
+            testoEmail.error = "Inserisci una mail valida"
+            testoEmail.requestFocus()
+            return false
+        }
+        if (password.isEmpty())
+        {
+            testoPassword.error = "inserisci la password"
+            testoPassword.requestFocus()
+            return false
+        }else
+        {
+            return true
         }
     }
 
