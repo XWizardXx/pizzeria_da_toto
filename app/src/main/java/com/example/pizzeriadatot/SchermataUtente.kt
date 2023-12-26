@@ -6,15 +6,24 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import com.example.pizzeriadatot.databinding.ActivitySchermataUtenteBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SchermataUtente : AppCompatActivity() {
-    var loggato : Boolean = false
+    private lateinit var binding : ActivitySchermataUtenteBinding
     private lateinit var auth : FirebaseAuth
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var dataBase : DatabaseReference
+    private lateinit var snapshot: DataSnapshot
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_schermata_utente)
+        binding = ActivitySchermataUtenteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
         val disconnetti : Button = findViewById(R.id.Disconnetti)
@@ -24,7 +33,39 @@ class SchermataUtente : AppCompatActivity() {
             startActivity(toLogin)
             finish()
         }
+
+        if (auth.currentUser != null)
+        {
+            leggiDataBase(utenteCorrente = auth.currentUser)
+        }
     }
+
+    private fun leggiDataBase(utenteCorrente : FirebaseUser?)
+    {
+        dataBase = FirebaseDatabase.getInstance().getReference("Utenti")
+        dataBase.child(utenteCorrente!!.uid).get().addOnCompleteListener {
+            if (it.isSuccessful)
+            {
+                if (it.result.exists())
+                {
+                    snapshot = it.result
+                    val textNomeUtente = snapshot.child("nome").value.toString()
+                    val textCognomeUtente = snapshot.child("cognome").value.toString()
+                    val textEmailUtente = snapshot.child("email").value.toString()
+                    binding.SUTextNome.text = textNomeUtente
+                    binding.SUTextCognome.text = textCognomeUtente
+                    binding.SUTextEmail.text = textEmailUtente
+                }else
+                {
+                    Toast.makeText(this, "L'utente non esiste!", Toast.LENGTH_LONG).show()
+                }
+            }else
+            {
+                Toast.makeText(this, "Dati non trovati!", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
     override fun onRestart() {
         super.onRestart()
         if(auth.currentUser != null)
