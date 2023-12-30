@@ -8,9 +8,8 @@
 
     <ImageButton
         android:id="@+id/toHome"
-        android:layout_width="48dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="194dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="icona ritorno alla home"
@@ -23,50 +22,38 @@
         android:id="@+id/toUser"
         android:layout_width="110dp"
         android:layout_height="48dp"
-        android:layout_marginStart="285dp"
         android:layout_marginEnd="16dp"
         android:text="UserPage"
         app:layout_constraintBottom_toTopOf="@+id/toMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toHome" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/toMenu"
         android:layout_width="110dp"
         android:layout_height="48dp"
-        android:layout_marginStart="285dp"
         android:layout_marginEnd="16dp"
         android:text="Menu"
-        app:layout_constraintBottom_toTopOf="@+id/toOptions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toUser" />
+        app:layout_constraintBottom_toTopOf="@+id/toCarrello"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/toOptions"
+        android:id="@+id/toCarrello"
         android:layout_width="110dp"
         android:layout_height="48dp"
-        android:layout_marginStart="285dp"
         android:layout_marginEnd="16dp"
-        android:text="Options"
+        android:text="Carrello"
         app:layout_constraintBottom_toTopOf="@+id/toOrders"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toMenu" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/toOrders"
         android:layout_width="110dp"
         android:layout_height="48dp"
-        android:layout_marginStart="285dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="480dp"
-        android:text="Orders"
+        android:layout_marginBottom="477dp"
+        android:text="Ordini"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toOptions" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/titolo"
@@ -74,11 +61,13 @@
         android:layout_height="43dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="194dp"
         android:layout_marginBottom="672dp"
         android:text="Da Totò"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/toHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
