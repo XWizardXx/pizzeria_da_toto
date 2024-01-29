@@ -34,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:text="calzone"
                     android:textColor="@color/black"
+                    android:background="@color/accent"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
@@ -41,6 +42,7 @@
                     android:id="@+id/ingredienti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/primary"
                     android:layout_marginTop="5dp"
                     android:text="sudo, podomoro, zozzarella" />
             </LinearLayout>
@@ -49,6 +51,7 @@
                 android:id="@+id/prezzo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/primary_light"
                 android:padding="15dp"
                 android:text="$3"/>
         </LinearLayout>
