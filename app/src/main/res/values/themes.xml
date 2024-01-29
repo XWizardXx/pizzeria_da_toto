@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status Bar -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@drawable/pizza_sfondo</item>
     </style>
 
     <style name="Theme.PizzeriaDaTotò" parent="Base.Theme.PizzeriaDaTotò" />
