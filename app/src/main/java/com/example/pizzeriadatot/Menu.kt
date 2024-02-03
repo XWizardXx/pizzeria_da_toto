@@ -16,23 +16,43 @@ class Menu : AppCompatActivity()
         setContentView(binding.root)
 
         val nomi = arrayOf(
-            "calzone"
-        )
+            "Calzone",
+            "Arancino",
+            "Crocchè di patate",
+            "Pizza al taglio margherita",
+            "Pizza al taglio con patate"
+            )
 
         val ingredienti = arrayOf(
-            "sudo, podomoro, zozzarella"
+            "Sudo, prosciutto, mozzarella",
+            "Riso al sugo, prosciutto, piselli, ragù di macinata",
+            "Patate",
+            "Sugo, mozzarella",
+            "Mozzarella, patate, rosmarino"
         )
 
         val prezzi = arrayOf(
-            "$3"
+            "3",
+            "2",
+            "1",
+            "1",
+            "1.5"
         )
 
         val allergeni = arrayOf(
-            "glutei, latticini"
+            "Glutine, latticini",
+            "Glutine",
+            "Glutine",
+            "Glutine, latticini",
+            "Glutine, latticini"
         )
 
         val imageIDs = intArrayOf(
-            R.drawable.calzone
+            R.drawable.calzone,
+            R.drawable.arancino,
+            R.drawable.crocche,
+            R.drawable.pizza_margherita,
+            R.drawable.pizza_patate
         )
 
 
