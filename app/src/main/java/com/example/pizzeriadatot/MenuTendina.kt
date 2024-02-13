@@ -26,7 +26,7 @@ class MenuTendina : AppCompatActivity()
         val userPage : Button = findViewById(R.id.toUser)
         userPage.setOnClickListener {
             val toLogin = Intent(this, Login::class.java)
-            Log.d("MenuTendina", "torno alla homepage")
+            Log.d("MenuTendina", "torno alla schermata utente")
             startActivity(toLogin)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
@@ -34,7 +34,7 @@ class MenuTendina : AppCompatActivity()
         val menu : Button = findViewById(R.id.toMenu)
         menu.setOnClickListener {
             val toMenu = Intent(this, Menu::class.java)
-            Log.d("MenuTendina", "torno alla homepage")
+            Log.d("MenuTendina", "torno alla schermata menù")
             startActivity(toMenu)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }

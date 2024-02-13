@@ -37,6 +37,18 @@ class Login : AppCompatActivity()
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+
+        if (auth.currentUser != null)
+        {
+            finish()
+        }else
+        {
+            Log.d("SchermataUtente", "utente non loggato")
+        }
+    }
+
     override fun onStart() {
         super.onStart()
 
@@ -46,6 +58,7 @@ class Login : AppCompatActivity()
             val toUser = Intent(this, SchermataUtente::class.java)
             startActivity(toUser)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
         }else
         {
             Log.d("SchermataUtente", "utente non loggato")
