@@ -19,15 +19,15 @@ class Menu : AppCompatActivity()
             "Calzone",
             "Arancino",
             "Crocchè di patate",
-            "Pizza al taglio margherita",
-            "Pizza al taglio con patate"
+            "Pizza margherita al taglio",
+            "Pizza con patate e rosmarino al taglio"
             )
 
         val ingredienti = arrayOf(
-            "Sudo, prosciutto, mozzarella",
-            "Riso al sugo, prosciutto, piselli, ragù di macinata",
+            "Sugo, prosciutto, ricotta",
+            "Riso al sugo, piselli, ragù di macinata",
             "Patate",
-            "Sugo, mozzarella",
+            "Sugo, mozzarella, basilico",
             "Mozzarella, patate, rosmarino"
         )
 
